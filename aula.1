@@ -1,1 +1,32 @@
+from pptx import Presentation
 
+# Inicializa a apresentação
+prs = Presentation()
+
+# --- SLIDE 1: TÍTULO ---
+layout_titulo = prs.slide_layouts[0]
+slide1 = prs.slides.add_slide(layout_titulo)
+
+slide1.shapes.title.text = "Apresentação Pessoal"
+slide1.placeholders[1].text = "Gustavo\n3º Semestre • 21 anos"
+
+# --- SLIDE 2: CONTATO ---
+layout_conteudo = prs.slide_layouts[1]
+slide2 = prs.slides.add_slide(layout_conteudo)
+
+# Título do slide
+slide2.shapes.title.text = "Informações de Contato"
+
+# Acessa a caixa de texto principal para inserir os dados
+tf = slide2.placeholders[1].text_frame
+tf.text = "• Nome: Gustavo"
+
+p1 = tf.add_paragraph()
+p1.text = "• Bairro: Parangaba, Fortaleza - CE"
+
+p2 = tf.add_paragraph()
+p2.text = "• Telefone: (85) 99999-9999"
+
+# Salva o arquivo pronto
+prs.save("apresentacao_gustavo.pptx")
+print("Apresentação atualizada com sucesso!")
